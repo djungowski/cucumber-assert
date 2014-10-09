@@ -1,0 +1,26 @@
+{
+  "name": "cucumber-assert",
+  "version": "0.0.1",
+  "description": "An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/djungowski/cucumber-assert.git"
+  },
+  "keywords": [
+    "cucumber.js",
+    "assert",
+    "assertion",
+    "bdd",
+    "testing"
+  ],
+  "author": "Dominik Jungowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djungowski/cucumber-assert/issues"
+  },
+  "homepage": "https://github.com/djungowski/cucumber-assert"
+}
