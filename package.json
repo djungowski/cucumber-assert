@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/djungowski/cucumber-assert/issues"
   },
-  "homepage": "https://github.com/djungowski/cucumber-assert"
+  "homepage": "https://github.com/djungowski/cucumber-assert",
+  "devDependencies": {
+	  "jasmine-node": "1.14.5"
+  }
 }
