@@ -25,4 +25,8 @@ cucumberAssert.prototype.deepEqual = function(actual, expected, callback, messag
 	this.callActualAssert('deepEqual', actual, expected, callback, message);
 };
 
+cucumberAssert.prototype.notDeepEqual = function(actual, expected, callback, message) {
+	this.callActualAssert('notDeepEqual', actual, expected, callback, message);
+};
+
 module.exports = new cucumberAssert();
