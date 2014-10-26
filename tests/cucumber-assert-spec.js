@@ -39,6 +39,13 @@ describe('cucumber-assert tests', function() {
 				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
 				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('"Big Bear" == "Bob Loblaw Law Blog."');
 			});
+
+			it('uses the provided message', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var message = 'Heart attack never stopped old Big Bear.';
+				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback, message);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+			});
 		});
 	});
 });
