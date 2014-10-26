@@ -81,4 +81,15 @@ describe('cucumber-assert tests', function() {
 			expect(assert.notDeepEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
 	});
+
+	describe('#strictEqual', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'strictEqual');
+			var actual = {"foo": "nope", "random": "Lungaharing"};
+			var expected = {"foo": "bar", "random": "object"};
+			var message = 'Are you going to make dancing illegal?';
+			cucumberAssert.strictEqual(actual, expected, cucumberCallback, message);
+			expect(assert.strictEqual).toHaveBeenCalledWith(actual, expected, message);
+		});
+	});
 });
