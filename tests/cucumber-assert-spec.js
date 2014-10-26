@@ -33,10 +33,12 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		it('calls the fail callback when assert was not successful', function() {
-			spyOn(callbackSpy.callback, 'fail');
-			cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
-			expect(callbackSpy.callback.fail).toHaveBeenCalled();
+		describe('calls the fail callback when assert was not successful', function() {
+			it ('uses the exception message', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('"Big Bear" == "Bob Loblaw Law Blog."');
+			});
 		});
 	});
 });

@@ -9,7 +9,7 @@ cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
 		assert.equal(actual, expected, message);
 		callback();
 	} catch(e) {
-		callback.fail();
+		callback.fail(e.message);
 	}
 };
 
