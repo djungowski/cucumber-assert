@@ -168,6 +168,13 @@ describe('cucumber-assert tests', function() {
 				cucumberAssert.doesNotThrow(block, callbackSpy.callback, message);
 				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
 			});
+
+			it('uses a custom message if no message is provided', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var block = function() { throw('She\'s a contestant') };
+				cucumberAssert.doesNotThrow(block, callbackSpy.callback);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Caught unexpected exception.');
+			});
 		});
 	});
 });
