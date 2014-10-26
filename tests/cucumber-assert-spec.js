@@ -103,4 +103,36 @@ describe('cucumber-assert tests', function() {
 			expect(assert.notStrictEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
 	});
+
+	describe('#throws', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'throws');
+			var block = function() { };
+			var error = Error;
+			var message = 'I\'m good and ready.';
+			cucumberAssert.throws(block, cucumberCallback, error, message);
+			expect(assert.throws).toHaveBeenCalledWith(block, error, message);
+		});
+
+		it('calls the callback', function() {
+			spyOn(callbackSpy, 'callback');
+			var block = function() { throw new Error(); };
+			var error = Error;
+			var message = 'I\'m good and ready.';
+			cucumberAssert.throws(block, callbackSpy.callback, error, message);
+			expect(callbackSpy.callback).toHaveBeenCalled();
+		});
+
+		describe('calls the fail callback when assert was not successful', function() {
+			it('uses the message provided', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var block = function () {
+				};
+				var error = 'You could hump that hood.';
+				var message = 'I see you\'ve wasted no time in filling my seat hole.';
+				cucumberAssert.throws(block, callbackSpy.callback, error, message);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+			});
+		});
+	});
 });

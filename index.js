@@ -4,7 +4,7 @@ var cucumberAssert = function() {
 
 };
 
-cucumberAssert.prototype.callActualAssert = function(method, actual, expected, callback, message) {
+cucumberAssert.prototype.callActualEqualAssert = function(method, actual, expected, callback, message) {
 	try {
 		assert[method](actual, expected, message);
 		callback();
@@ -13,28 +13,41 @@ cucumberAssert.prototype.callActualAssert = function(method, actual, expected, c
 	}
 };
 
+cucumberAssert.prototype.callActualBlockAssert = function(method, block, callback, error, message) {
+	try {
+		assert[method](block, error, message);
+		callback();
+	} catch(e) {
+		callback.fail(message);
+	}
+};
+
 cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
-	this.callActualAssert('equal', actual, expected, callback, message);
+	this.callActualEqualAssert('equal', actual, expected, callback, message);
 };
 
 cucumberAssert.prototype.notEqual = function(actual, expected, callback, message) {
-	this.callActualAssert('notEqual', actual, expected, callback, message);
+	this.callActualEqualAssert('notEqual', actual, expected, callback, message);
 };
 
 cucumberAssert.prototype.deepEqual = function(actual, expected, callback, message) {
-	this.callActualAssert('deepEqual', actual, expected, callback, message);
+	this.callActualEqualAssert('deepEqual', actual, expected, callback, message);
 };
 
 cucumberAssert.prototype.notDeepEqual = function(actual, expected, callback, message) {
-	this.callActualAssert('notDeepEqual', actual, expected, callback, message);
+	this.callActualEqualAssert('notDeepEqual', actual, expected, callback, message);
 };
 
 cucumberAssert.prototype.strictEqual = function(actual, expected, callback, message) {
-	this.callActualAssert('strictEqual', actual, expected, callback, message);
+	this.callActualEqualAssert('strictEqual', actual, expected, callback, message);
 };
 
 cucumberAssert.prototype.notStrictEqual = function(actual, expected, callback, message) {
-	this.callActualAssert('notStrictEqual', actual, expected, callback, message);
+	this.callActualEqualAssert('notStrictEqual', actual, expected, callback, message);
+};
+
+cucumberAssert.prototype.throws = function(block, callback, error, message) {
+	this.callActualBlockAssert('throws', block, callback, error, message);
 };
 
 module.exports = new cucumberAssert();
