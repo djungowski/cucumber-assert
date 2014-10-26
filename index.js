@@ -1,10 +1,10 @@
 var assert = require('assert');
 
-var cucumberAssert = function() {
+var CucumberAssert = function() {
 
 };
 
-cucumberAssert.prototype.callActualEqualAssert = function(method, actual, expected, callback, message) {
+CucumberAssert.prototype.callActualEqualAssert = function(method, actual, expected, callback, message) {
 	try {
 		assert[method](actual, expected, message);
 		callback();
@@ -13,31 +13,31 @@ cucumberAssert.prototype.callActualEqualAssert = function(method, actual, expect
 	}
 };
 
-cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
+CucumberAssert.prototype.equal = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('equal', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.notEqual = function(actual, expected, callback, message) {
+CucumberAssert.prototype.notEqual = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('notEqual', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.deepEqual = function(actual, expected, callback, message) {
+CucumberAssert.prototype.deepEqual = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('deepEqual', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.notDeepEqual = function(actual, expected, callback, message) {
+CucumberAssert.prototype.notDeepEqual = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('notDeepEqual', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.strictEqual = function(actual, expected, callback, message) {
+CucumberAssert.prototype.strictEqual = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('strictEqual', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.notStrictEqual = function(actual, expected, callback, message) {
+CucumberAssert.prototype.notStrictEqual = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('notStrictEqual', actual, expected, callback, message);
 };
 
-cucumberAssert.prototype.throws = function(block, callback, error, message) {
+CucumberAssert.prototype.throws = function(block, callback, error, message) {
 	try {
 		assert.throws(block, error, message);
 		callback();
@@ -48,7 +48,7 @@ cucumberAssert.prototype.throws = function(block, callback, error, message) {
 	}
 };
 
-cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
+CucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 	try {
 		assert.doesNotThrow(block, message);
 		callback();
@@ -60,7 +60,7 @@ cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 	}
 };
 
-cucumberAssert.prototype.ifError = function(value, callback, message) {
+CucumberAssert.prototype.ifError = function(value, callback, message) {
 	try {
 		assert.ifError(value);
 		callback();
@@ -70,4 +70,4 @@ cucumberAssert.prototype.ifError = function(value, callback, message) {
 	}
 };
 
-module.exports = new cucumberAssert();
+module.exports = new CucumberAssert();
