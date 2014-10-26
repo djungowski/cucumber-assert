@@ -192,10 +192,19 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		it('calls the fail callback when assertion was not successful', function() {
-			spyOn(callbackSpy.callback, 'fail');
-			cucumberAssert.ifError(true, callbackSpy.callback);
-			expect(callbackSpy.callback.fail).toHaveBeenCalled();
+		describe('calls the fail callback when assertion was not successful', function() {
+			it('uses the provided message', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var message = 'I may have committed some light treason.';
+				cucumberAssert.ifError(true, callbackSpy.callback, message);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+			});
+
+			it('uses a custom error message if no message is provided', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				cucumberAssert.ifError(true, callbackSpy.callback);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Expected value to be false, true provided.');
+			});
 		});
 	});
 });

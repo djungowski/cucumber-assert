@@ -60,12 +60,13 @@ cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 	}
 };
 
-cucumberAssert.prototype.ifError = function(value, callback) {
+cucumberAssert.prototype.ifError = function(value, callback, message) {
 	try {
 		assert.ifError(value);
 		callback();
 	} catch(e) {
-		callback.fail();
+		message = message || 'Expected value to be false, true provided.';
+		callback.fail(message);
 	}
 };
 
