@@ -1,6 +1,7 @@
 cucumber-assert
 ===============
 An assertion library for cucumber.js
+It allows assertions in cucumber.js without extra-long stacktraces when an assertion fails.
 
 ## Installation
 ~~~ bash
