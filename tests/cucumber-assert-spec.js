@@ -142,4 +142,26 @@ describe('cucumber-assert tests', function() {
 			});
 		});
 	});
+
+	describe('#doesNotThrow', function() {
+		it('calls the actual assert with all the params', function () {
+			spyOn(assert, 'doesNotThrow');
+			var block = function () {};
+			var message = 'Maybe it\'s not for us.';
+			cucumberAssert.doesNotThrow(block, cucumberCallback, message);
+			expect(assert.doesNotThrow).toHaveBeenCalledWith(block, message);
+		});
+
+		it('calls the callback', function() {
+			spyOn(callbackSpy, 'callback');
+			var block = function () {};
+			var message = 'Maybe it\'s not for us.';
+			cucumberAssert.doesNotThrow(block, callbackSpy.callback, message);
+			expect(callbackSpy.callback).toHaveBeenCalled();
+		});
+
+		it('calls the fail callback when assertion was not successful', function() {
+
+		});
+	});
 });

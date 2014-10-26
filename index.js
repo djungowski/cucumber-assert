@@ -13,17 +13,6 @@ cucumberAssert.prototype.callActualEqualAssert = function(method, actual, expect
 	}
 };
 
-cucumberAssert.prototype.callActualBlockAssert = function(method, block, callback, error, message) {
-	try {
-		assert[method](block, error, message);
-		callback();
-	} catch(e) {
-		// For some reason with assert.throws, etc. the exception does not use the message provided
-		message = message || e.message;
-		callback.fail(message);
-	}
-};
-
 cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
 	this.callActualEqualAssert('equal', actual, expected, callback, message);
 };
@@ -49,7 +38,25 @@ cucumberAssert.prototype.notStrictEqual = function(actual, expected, callback, m
 };
 
 cucumberAssert.prototype.throws = function(block, callback, error, message) {
-	this.callActualBlockAssert('throws', block, callback, error, message);
+	try {
+		assert.throws(block, error, message);
+		callback();
+	} catch(e) {
+		// For some reason with assert.throws, etc. the exception does not use the message provided
+		message = message || e.message;
+		callback.fail(message);
+	}
+};
+
+cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
+	try {
+		assert.doesNotThrow(block, message);
+		callback();
+	} catch(e) {
+		// For some reason with assert.throws, etc. the exception does not use the message provided
+		message = message || e.message;
+		callback.fail(message);
+	}
 };
 
 module.exports = new cucumberAssert();
