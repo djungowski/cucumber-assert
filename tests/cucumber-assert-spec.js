@@ -85,9 +85,9 @@ describe('cucumber-assert tests', function() {
 	describe('#strictEqual', function() {
 		it('calls the actual assert with all the params', function() {
 			spyOn(assert, 'strictEqual');
-			var actual = {"foo": "nope", "random": "Lungaharing"};
-			var expected = {"foo": "bar", "random": "object"};
-			var message = 'Are you going to make dancing illegal?';
+			var actual = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
+			var expected = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
+			var message = 'Do the right thing here.';
 			cucumberAssert.strictEqual(actual, expected, cucumberCallback, message);
 			expect(assert.strictEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
