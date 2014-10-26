@@ -13,4 +13,13 @@ cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
 	}
 };
 
+cucumberAssert.prototype.notEqual = function(actual, expected, callback, message) {
+	try {
+		assert.notEqual(actual, expected, message);
+		callback();
+	} catch(e) {
+		callback.fail(e.message);
+	}
+};
+
 module.exports = new cucumberAssert();

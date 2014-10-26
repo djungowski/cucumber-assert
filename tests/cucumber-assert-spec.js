@@ -22,7 +22,7 @@ describe('cucumber-assert tests', function() {
 			var expected = 'someRandomString';
 			var message = 'Some failure message';
 
-			cucumberAssert.equal(actual, expected, callbackSpy.callback, message);
+			cucumberAssert.equal(actual, expected, cucumberCallback, message);
 			expect(assert.equal).toHaveBeenCalledWith(actual, expected, message);
 		});
 
@@ -46,6 +46,17 @@ describe('cucumber-assert tests', function() {
 				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback, message);
 				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
 			});
+		});
+	});
+
+	describe('#notEqual', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'notEqual');
+			var actual = 'No, it\'s the opposite.';
+			var expected = 'Perhaps you remember Neuterfest?';
+			var message = 'Moms are such a pain in the ass, huh?';
+			cucumberAssert.notEqual(actual, expected, cucumberCallback, message);
+			expect(assert.notEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
 	});
 });
