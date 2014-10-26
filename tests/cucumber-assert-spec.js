@@ -85,11 +85,22 @@ describe('cucumber-assert tests', function() {
 	describe('#strictEqual', function() {
 		it('calls the actual assert with all the params', function() {
 			spyOn(assert, 'strictEqual');
-			var actual = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
-			var expected = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
+			var actual = function() { return 'But where did the lighter fluid come from?'};
+			var expected = 'But where did the lighter fluid come from?';
 			var message = 'Do the right thing here.';
 			cucumberAssert.strictEqual(actual, expected, cucumberCallback, message);
 			expect(assert.strictEqual).toHaveBeenCalledWith(actual, expected, message);
+		});
+	});
+
+	describe('#notStrictEqual', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'notStrictEqual');
+			var actual = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
+			var expected = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
+			var message = 'I\'ve always been deeply passionate about nature. ';
+			cucumberAssert.notStrictEqual(actual, expected, cucumberCallback, message);
+			expect(assert.notStrictEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
 	});
 });

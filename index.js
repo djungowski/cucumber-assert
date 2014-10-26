@@ -33,4 +33,8 @@ cucumberAssert.prototype.strictEqual = function(actual, expected, callback, mess
 	this.callActualAssert('strictEqual', actual, expected, callback, message);
 };
 
+cucumberAssert.prototype.notStrictEqual = function(actual, expected, callback, message) {
+	this.callActualAssert('notStrictEqual', actual, expected, callback, message);
+};
+
 module.exports = new cucumberAssert();
