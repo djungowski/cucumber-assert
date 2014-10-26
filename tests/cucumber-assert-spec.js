@@ -126,12 +126,19 @@ describe('cucumber-assert tests', function() {
 		describe('calls the fail callback when assert was not successful', function() {
 			it('uses the message provided', function() {
 				spyOn(callbackSpy.callback, 'fail');
-				var block = function () {
-				};
+				var block = function () {};
 				var error = 'You could hump that hood.';
 				var message = 'I see you\'ve wasted no time in filling my seat hole.';
 				cucumberAssert.throws(block, callbackSpy.callback, error, message);
 				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+			});
+
+			it('uses the exception message if no message is provided', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var block = function () {};
+				var error = 'You can always tell a Milford man.';
+				cucumberAssert.throws(block, callbackSpy.callback, error);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Missing expected exception. You can always tell a Milford man.');
 			});
 		});
 	});
