@@ -5,8 +5,12 @@ var cucumberAssert = function() {
 };
 
 cucumberAssert.prototype.equal = function(actual, expected, callback, message) {
-	assert.equal(actual, expected, message);
-	callback();
+	try {
+		assert.equal(actual, expected, message);
+		callback();
+	} catch(e) {
+		callback.fail();
+	}
 };
 
 module.exports = new cucumberAssert();

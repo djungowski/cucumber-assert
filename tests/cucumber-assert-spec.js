@@ -2,8 +2,16 @@ var cucumberAssert = require('../index.js');
 var assert = require('assert');
 
 describe('cucumber-assert tests', function() {
+	var cucumberCallback = function() {
+
+	};
+
+	cucumberCallback.fail = function() {
+
+	};
+
 	var callbackSpy = {
-		callback: function() {}
+		callback: cucumberCallback
 	};
 
 	describe('#equal', function() {
@@ -23,6 +31,12 @@ describe('cucumber-assert tests', function() {
 
 			cucumberAssert.equal('Heyyyyy, hermano.', 'Heyyyyy, hermano.', callbackSpy.callback, 'There are dozens of us! DOZENS!');
 			expect(callbackSpy.callback).toHaveBeenCalled();
+		});
+
+		it('calls the fail callback when assert was not successful', function() {
+			spyOn(callbackSpy.callback, 'fail');
+			cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
+			expect(callbackSpy.callback.fail).toHaveBeenCalled();
 		});
 	});
 });
