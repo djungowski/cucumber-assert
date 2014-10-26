@@ -60,4 +60,8 @@ cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 	}
 };
 
+cucumberAssert.prototype.ifError = function(value, callback) {
+	assert.ifError(value);
+};
+
 module.exports = new cucumberAssert();

@@ -177,4 +177,13 @@ describe('cucumber-assert tests', function() {
 			});
 		});
 	});
+
+	describe('#ifError', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'ifError');
+			var value = true;
+			cucumberAssert.ifError(value, cucumberCallback);
+			expect(assert.ifError).toHaveBeenCalledWith(value);
+		});
+	});
 });
