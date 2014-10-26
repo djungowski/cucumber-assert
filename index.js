@@ -54,7 +54,7 @@ cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 		callback();
 	} catch(e) {
 		// For some reason with assert.throws, etc. the exception does not use the message provided
-		message = message || e.message;
+//		message = message || e.message;
 		callback.fail(message);
 	}
 };

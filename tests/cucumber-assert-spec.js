@@ -160,8 +160,14 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		it('calls the fail callback when assertion was not successful', function() {
-
+		describe('calls the fail callback when assertion was not successful', function() {
+			it('uses the message provided', function() {
+				spyOn(callbackSpy.callback, 'fail');
+				var block = function() { throw('She\'s a contestant') };
+				var message = 'Stack the chafing dishes outside by the mailbox.';
+				cucumberAssert.doesNotThrow(block, callbackSpy.callback, message);
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+			});
 		});
 	});
 });
