@@ -1,10 +1,10 @@
 {
   "name": "cucumber-assert",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node tests/"
+    "test": "./node_modules/jasmine-node/bin/jasmine-node tests/"
   },
   "repository": {
     "type": "git",
