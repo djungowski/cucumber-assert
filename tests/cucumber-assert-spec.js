@@ -59,4 +59,15 @@ describe('cucumber-assert tests', function() {
 			expect(assert.notEqual).toHaveBeenCalledWith(actual, expected, message);
 		});
 	});
+
+	describe('#deepEqual', function() {
+		it('calls the actual assert with all the params', function() {
+			spyOn(assert, 'deepEqual');
+			var actual = {"foo": "bar", "random": "object"};
+			var expected = {"foo": "bar", "random": "object"};
+			var message = 'Wow. You, sir, are a mouthfu';
+			cucumberAssert.deepEqual(actual, expected, cucumberCallback, message);
+			expect(assert.deepEqual).toHaveBeenCalledWith(actual, expected, message);
+		});
+	});
 });
