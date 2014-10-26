@@ -14,7 +14,7 @@ var assert = require('cucumber-assert');
 
 module.exports = function() {
 
-	this.Given(/^the field E-Mail is filled with "([^"]*)" befüllt$/, function (email, callback) {
+	this.Given(/^the field E-Mail is filled with "([^"]*)"/, function (email, callback) {
 		var fieldValue = this.getFieldValue('#password');
 		assert.equal(fieldValue, email, callback, 'Expected E-Mail to be ' + email);
 	});
