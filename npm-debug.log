@@ -1,0 +1,112 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/djungowski/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+12 verbose folder .
+13 info prepublish cucumber-assert@1.0.0
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/djungowski/.npm/1f1177db-tar.lock
+16 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+17 verbose lock tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz /Users/djungowski/.npm/900abc9b-09893-0-8342434593942016-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+21 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+22 verbose tar unpack /var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+23 silly lockFile 759f8b82-pm-cucumber-assert-1-0-0-package tar:///Users/djungowski/.npm/cucumber-assert/1.0.0/package
+24 verbose lock tar:///Users/djungowski/.npm/cucumber-assert/1.0.0/package /Users/djungowski/.npm/759f8b82-pm-cucumber-assert-1-0-0-package.lock
+25 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+26 verbose lock tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz /Users/djungowski/.npm/900abc9b-09893-0-8342434593942016-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm extractEntry README.md
+31 silly gunzTarPerm extractEntry index.js
+32 silly gunzTarPerm extractEntry tests/cucumber-assert-spec.js
+33 silly lockFile 759f8b82-pm-cucumber-assert-1-0-0-package tar:///Users/djungowski/.npm/cucumber-assert/1.0.0/package
+34 silly lockFile 759f8b82-pm-cucumber-assert-1-0-0-package tar:///Users/djungowski/.npm/cucumber-assert/1.0.0/package
+35 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+36 silly lockFile 900abc9b-09893-0-8342434593942016-tmp-tgz tar:///var/folders/xk/4vs925g95wx2dt3fqxmk3sw00000gn/T/npm-4640-t8seD8rw/1414357509893-0.8342434593942016/tmp.tgz
+37 silly lockFile 3a52ce78- .
+38 silly lockFile 3a52ce78- .
+39 silly publish { name: 'cucumber-assert',
+39 silly publish   version: '1.0.0',
+39 silly publish   description: 'An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions',
+39 silly publish   main: 'index.js',
+39 silly publish   scripts: { test: './node_modules/jasmine-node/bin/jasmine-node tests/' },
+39 silly publish   repository:
+39 silly publish    { type: 'git',
+39 silly publish      url: 'git://github.com/djungowski/cucumber-assert.git' },
+39 silly publish   keywords: [ 'cucumber.js', 'assert', 'assertion', 'bdd', 'testing' ],
+39 silly publish   author: { name: 'Dominik Jungowski' },
+39 silly publish   license: 'ISC',
+39 silly publish   bugs: { url: 'https://github.com/djungowski/cucumber-assert/issues' },
+39 silly publish   homepage: 'https://github.com/djungowski/cucumber-assert',
+39 silly publish   devDependencies: { 'jasmine-node': '1.14.5' },
+39 silly publish   readme: 'cucumber-assert\n===============\nAn assertion library for [cucumber.js](https://github.com/cucumber/cucumber-js)\nIt allows assertions in cucumber.js without extra-long stacktraces when an assertion fails.\n\n## Installation\n~~~ bash\nnpm install cucumber-assert\n~~~\n\n## Example usage\n```javascript\nvar assert = require(\'cucumber-assert\');\n\nmodule.exports = function() {\n\n\tthis.Given(/^the field E-Mail is filled with "([^"]*)"/, function (email, callback) {\n\t\tvar fieldValue = this.getFieldValue(\'#password\');\n\t\tassert.equal(fieldValue, email, callback, \'Expected E-Mail to be \' + email);\n\t});\n\n}\n```\n\n## Available assertions\nGenerally cucumber-assert wraps the assertions available by default in node. For reference see http://nodejs.org/api/assert.html\n\nThe paramater "callback" is the callback provided by cucumber.js in step definitions and has to be passed always alongside the actual values and expectations.\n\n#### equal(actual, expected, callback, [message])\n#### notEqual(actual, expected, callback, [message])\n#### deepEqual(actual, expected, callback, [message])\n#### notDeepEqual(actual, expected, callback, [message])\n#### strictEqual(actual, expected, callback, [message])\n#### notStrictEqual(actual, expected, callback, [message])\n#### throws(block, callback, [error], [message])\n#### doesNotThrow(block, callback, [message])\n#### ifError(value, callback, [message])\n',
+39 silly publish   readmeFilename: 'README.md',
+39 silly publish   _id: 'cucumber-assert@1.0.0',
+39 silly publish   _shasum: '11b6993b2a208ea397981d96fe59bb5b2c94448f',
+39 silly publish   _from: '.' }
+40 verbose url raw cucumber-assert
+41 verbose url resolving [ 'https://registry.npmjs.org/', './cucumber-assert' ]
+42 verbose url resolved https://registry.npmjs.org/cucumber-assert
+43 info trying registry request attempt 1 at 22:05:09
+44 http PUT https://registry.npmjs.org/cucumber-assert
+45 http 403 https://registry.npmjs.org/cucumber-assert
+46 verbose headers { date: 'Sun, 26 Oct 2014 21:05:11 GMT',
+46 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+46 verbose headers   'content-type': 'application/json',
+46 verbose headers   'cache-control': 'max-age=60',
+46 verbose headers   'content-length': '4058',
+46 verbose headers   'accept-ranges': 'bytes',
+46 verbose headers   via: '1.1 varnish',
+46 verbose headers   'x-served-by': 'cache-fra1220-FRA',
+46 verbose headers   'x-cache': 'MISS',
+46 verbose headers   'x-cache-hits': '0',
+46 verbose headers   'x-timer': 'S1414357510.386795,VS0,VE664',
+46 verbose headers   'keep-alive': 'timeout=10, max=50',
+46 verbose headers   connection: 'Keep-Alive' }
+47 error publish Failed PUT 403
+48 error Error: forbidden cannot modify pre-existing version: 1.0.0
+48 error old={"name":"cucumber-assert","version":"1.0.0","description":"An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions","main":"index.js","scripts":{"test":"./node_modules/jasmine-node/bin/jasmine-node tests/"},"repository":{"type":"git","url":"git://github.com/djungowski/cucumber-assert.git"},"keywords":["cucumber.js","assert","assertion","bdd","testing"],"author":{"name":"Dominik Jungowski"},"license":"ISC","bugs":{"url":"https://github.com/djungowski/cucumber-assert/issues"},"homepage":"https://github.com/djungowski/cucumber-assert","devDependencies":{"jasmine-node":"1.14.5"},"_id":"cucumber-assert@1.0.0","_shasum":"f932e0f6f55b1547c2def050bd4459cfbfc5a60e","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"djungowski","email":"dominik@jungowski.de"},"maintainers":[{"name":"djungowski","email":"dominik@jungowski.de"}],"dist":{"shasum":"f932e0f6f55b1547c2def050bd4459cfbfc5a60e","tarball":"http://registry.npmjs.org/cucumber-assert/-/cucumber-assert-1.0.0.tgz"}}
+48 error new={"name":"cucumber-assert","version":"1.0.0","description":"An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions","main":"index.js","scripts":{"test":"./node_modules/jasmine-node/bin/jasmine-node tests/"},"repository":{"type":"git","url":"git://github.com/djungowski/cucumber-assert.git"},"keywords":["cucumber.js","assert","assertion","bdd","testing"],"author":{"name":"Dominik Jungowski"},"license":"ISC","bugs":{"url":"https://github.com/djungowski/cucumber-assert/issues"},"homepage":"https://github.com/djungowski/cucumber-assert","devDependencies":{"jasmine-node":"1.14.5"},"readme":"cucumber-assert\u000a===============\u000aAn assertion library for [cucumber.js](https://github.com/cucumber/cucumber-js)\u000aIt allows assertions in cucumber.js without extra-long stacktraces when an assertion fails.\u000a\u000a## Installation\u000a~~~ bash\u000anpm install cucumber-assert\u000a~~~\u000a\u000a## Example usage\u000a```javascript\u000avar assert = require('cucumber-assert');\u000a\u000amodule.exports = function() {\u000a\u000a\u0009this.Given(/^the field E-Mail is filled with \"([^\"]*)\"/, function (email, callback) {\u000a\u0009\u0009var fieldValue = this.getFieldValue('#password');\u000a\u0009\u0009assert.equal(fieldValue, email, callback, 'Expected E-Mail to be ' + email);\u000a\u0009});\u000a\u000a}\u000a```\u000a\u000a## Available assertions\u000aGenerally cucumber-assert wraps the assertions available by default in node. For reference see http://nodejs.org/api/assert.html\u000a\u000aThe paramater \"callback\" is the callback provided by cucumber.js in step definitions and has to be passed always alongside the actual values and expectations.\u000a\u000a#### equal(actual, expected, callback, [message])\u000a#### notEqual(actual, expected, callback, [message])\u000a#### deepEqual(actual, expected, callback, [message])\u000a#### notDeepEqual(actual, expected, callback, [message])\u000a#### strictEqual(actual, expected, callback, [message])\u000a#### notStrictEqual(actual, expected, callback, [message])\u000a#### throws(block, callback, [error], [message])\u000a#### doesNotThrow(block, callback, [message])\u000a#### ifError(value, callback, [message])\u000a","readmeFilename":"README.md","_id":"cucumber-assert@1.0.0","_shasum":"11b6993b2a208ea397981d96fe59bb5b2c94448f","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"djungowski","email":"dominik@jungowski.de"},"maintainers":[{"name":"djungowski","email":"dominik@jungowski.de"}],"dist":{"shasum":"11b6993b2a208ea397981d96fe59bb5b2c94448f","tarball":"http://registry.npmjs.org/cucumber-assert/-/cucumber-assert-1.0.0.tgz"}}: cucumber-assert
+48 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
+48 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
+48 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+48 error     at Request.EventEmitter.emit (events.js:98:17)
+48 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+48 error     at Request.EventEmitter.emit (events.js:117:20)
+48 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+48 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+48 error     at _stream_readable.js:919:16
+48 error     at process._tickCallback (node.js:419:13)
+49 error If you need help, you may report this *entire* log,
+49 error including the npm and node versions, at:
+49 error     <http://github.com/npm/npm/issues>
+50 error System Darwin 14.0.0
+51 error command "node" "/usr/local/bin/npm" "publish"
+52 error cwd /Users/djungowski/Documents/workspace/cucumber-assert
+53 error node -v v0.10.28
+54 error npm -v 1.4.9
+55 verbose exit [ 1, true ]
