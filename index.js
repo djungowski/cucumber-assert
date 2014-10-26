@@ -55,7 +55,7 @@ cucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 	} catch(e) {
 		// For some reason with assert.doesNotThrow the exception message is undefined. Use a custom one
 		// if no message is provided
-		message = message || 'Caught unexpected exception.';
+		message = message || 'Caught exception where there was supposed to be none.';
 		callback.fail(message);
 	}
 };

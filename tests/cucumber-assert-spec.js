@@ -173,7 +173,7 @@ describe('cucumber-assert tests', function() {
 				spyOn(callbackSpy.callback, 'fail');
 				var block = function() { throw('She\'s a contestant') };
 				cucumberAssert.doesNotThrow(block, callbackSpy.callback);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Caught unexpected exception.');
+				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Caught exception where there was supposed to be none.');
 			});
 		});
 	});
