@@ -185,5 +185,17 @@ describe('cucumber-assert tests', function() {
 			cucumberAssert.ifError(value, cucumberCallback);
 			expect(assert.ifError).toHaveBeenCalledWith(value);
 		});
+
+		it('calls the callback', function() {
+			spyOn(callbackSpy, 'callback');
+			cucumberAssert.ifError(false, callbackSpy.callback);
+			expect(callbackSpy.callback).toHaveBeenCalled();
+		});
+
+		it('calls the fail callback when assertion was not successful', function() {
+			spyOn(callbackSpy.callback, 'fail');
+			cucumberAssert.ifError(true, callbackSpy.callback);
+			expect(callbackSpy.callback.fail).toHaveBeenCalled();
+		});
 	});
 });
