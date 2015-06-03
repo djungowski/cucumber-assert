@@ -24,7 +24,7 @@ module.exports = function() {
 ## Available assertions
 Generally cucumber-assert wraps the assertions available by default in node. For reference see http://nodejs.org/api/assert.html
 
-The paramater "callback" is the callback provided by cucumber.js in step definitions and has to be passed always alongside the actual values and expectations.
+The parameter "callback" is the callback provided by cucumber.js in step definitions and has to be passed always alongside the actual values and expectations.
 
 #### equal(actual, expected, callback, [message])
 #### notEqual(actual, expected, callback, [message])
