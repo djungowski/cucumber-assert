@@ -19,7 +19,7 @@ CucumberAssert.prototype.callActualEqualAssert = function(method, actual, expect
 		assert[method](actual, expected, message);
 		callback();
 	} catch(e) {
-		callback.fail(e.message);
+		callback(new Error(e.message));
 	}
 };
 
@@ -110,7 +110,7 @@ CucumberAssert.prototype.throws = function(block, callback, error, message) {
 	} catch(e) {
 		// For some reason with assert.throws, etc. the exception does not use the message provided
 		message = message || e.message;
-		callback.fail(message);
+		callback(new Error(message));
 	}
 };
 
@@ -129,7 +129,7 @@ CucumberAssert.prototype.doesNotThrow = function(block, callback, message) {
 		// For some reason with assert.doesNotThrow the exception message is undefined. Use a custom one
 		// if no message is provided
 		message = message || 'Caught exception where there was supposed to be none.';
-		callback.fail(message);
+		callback(new Error(message));
 	}
 };
 
@@ -146,7 +146,7 @@ CucumberAssert.prototype.ifError = function(value, callback, message) {
 		callback();
 	} catch(e) {
 		message = message || 'Expected value to be false, true provided.';
-		callback.fail(message);
+		callback(new Error(message));
 	}
 };
 
