@@ -1,4 +1,4 @@
-var cucumberAssert = require('../index.js');
+var cucumberAssert = require('../../index.js');
 var assert = require('assert');
 
 describe('cucumber-assert tests', function() {
