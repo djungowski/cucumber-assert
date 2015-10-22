@@ -6,10 +6,6 @@ describe('cucumber-assert tests', function() {
 
 	};
 
-	cucumberCallback.fail = function() {
-
-	};
-
 	var callbackSpy = {
 		callback: cucumberCallback
 	};
@@ -33,7 +29,7 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assert was not successful', function() {
+		describe('calls the callback with new Error when assert was not successful', function() {
 			it ('uses the exception message', function() {
 				spyOn(callbackSpy, 'callback');
 				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
@@ -123,7 +119,7 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assert was not successful', function() {
+		describe('calls the callback with new Error when assert was not successful', function() {
 			it('uses the message provided', function() {
 				spyOn(callbackSpy, 'callback');
 				var block = function () {};
@@ -160,7 +156,7 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assertion was not successful', function() {
+		describe('calls the callback with new Error when assertion was not successful', function() {
 			it('uses the message provided', function() {
 				spyOn(callbackSpy, 'callback');
 				var block = function() { throw('She\'s a contestant') };
@@ -192,7 +188,7 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assertion was not successful', function() {
+		describe('calls the callback with new Error when assertion was not successful', function() {
 			it('uses the provided message', function() {
 				spyOn(callbackSpy, 'callback');
 				var message = 'I may have committed some light treason.';
