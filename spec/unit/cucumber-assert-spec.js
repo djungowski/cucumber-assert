@@ -1,12 +1,8 @@
-var cucumberAssert = require('../index.js');
+var cucumberAssert = require('../../index.js');
 var assert = require('assert');
 
 describe('cucumber-assert tests', function() {
 	var cucumberCallback = function() {
-
-	};
-
-	cucumberCallback.fail = function() {
 
 	};
 
@@ -33,18 +29,18 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assert was not successful', function() {
+		describe('calls the callback with new Error when assert was not successful', function() {
 			it ('uses the exception message', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('"Big Bear" == "Bob Loblaw Law Blog."');
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error('\'Big Bear\' == \'Bob Loblaw Law Blog.\''));
 			});
 
 			it('uses the provided message', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var message = 'Heart attack never stopped old Big Bear.';
 				cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', callbackSpy.callback, message);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error(message));
 			});
 		});
 	});
@@ -123,22 +119,22 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assert was not successful', function() {
+		describe('calls the callback with new Error when assert was not successful', function() {
 			it('uses the message provided', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var block = function () {};
 				var error = 'You could hump that hood.';
 				var message = 'I see you\'ve wasted no time in filling my seat hole.';
 				cucumberAssert.throws(block, callbackSpy.callback, error, message);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error(message));
 			});
 
 			it('uses the exception message if no message is provided', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var block = function () {};
 				var error = 'You can always tell a Milford man.';
 				cucumberAssert.throws(block, callbackSpy.callback, error);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Missing expected exception. You can always tell a Milford man.');
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error('Missing expected exception. You can always tell a Milford man.'));
 			});
 		});
 	});
@@ -160,20 +156,20 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assertion was not successful', function() {
+		describe('calls the callback with new Error when assertion was not successful', function() {
 			it('uses the message provided', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var block = function() { throw('She\'s a contestant') };
 				var message = 'Stack the chafing dishes outside by the mailbox.';
 				cucumberAssert.doesNotThrow(block, callbackSpy.callback, message);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error(message));
 			});
 
 			it('uses a custom message if no message is provided', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var block = function() { throw('She\'s a contestant') };
 				cucumberAssert.doesNotThrow(block, callbackSpy.callback);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Caught exception where there was supposed to be none.');
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error('Caught exception where there was supposed to be none.'));
 			});
 		});
 	});
@@ -192,18 +188,18 @@ describe('cucumber-assert tests', function() {
 			expect(callbackSpy.callback).toHaveBeenCalled();
 		});
 
-		describe('calls the fail callback when assertion was not successful', function() {
+		describe('calls the callback with new Error when assertion was not successful', function() {
 			it('uses the provided message', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				var message = 'I may have committed some light treason.';
 				cucumberAssert.ifError(true, callbackSpy.callback, message);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith(message);
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error(message));
 			});
 
 			it('uses a custom error message if no message is provided', function() {
-				spyOn(callbackSpy.callback, 'fail');
+				spyOn(callbackSpy, 'callback');
 				cucumberAssert.ifError(true, callbackSpy.callback);
-				expect(callbackSpy.callback.fail).toHaveBeenCalledWith('Expected value to be false, true provided.');
+				expect(callbackSpy.callback).toHaveBeenCalledWith(new Error('Expected value to be false, true provided.'));
 			});
 		});
 	});
