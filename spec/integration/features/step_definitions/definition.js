@@ -39,6 +39,14 @@ module.exports = function () {
 		assert.ifError({}, createAssertErrorMessage(callback), errorMessageString);
 	});
 
+	this.When(/^I use multiple equals$/, function (callback) {
+		// Write code here that turns the phrase above into concrete actions
+		assert.expectMultipleEquals(3, callback);
+		assert.equal(true, true, callback, errorMessageString);
+		assert.equal(true, true, callback, errorMessageString);
+		assert.equal(true, true, callback, errorMessageString);
+	});
+
 	this.Then(/^everything worked as expected$/, function (callback) {
 		nodeAssert.equal(errorsEncountered, 4);
 		callback();
