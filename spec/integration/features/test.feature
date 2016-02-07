@@ -1,5 +1,5 @@
 Feature: Test
-  Scenario: Foobar
+  Scenario: Testing all the possible scenarios
     Given I run the cucumber suits
     When I fail an assert
     And I fail a throws
