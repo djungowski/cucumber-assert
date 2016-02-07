@@ -24,8 +24,10 @@ CucumberAssert.prototype.callActualEqualAssert = function(method, actual, expect
 
 	try {
 		assert[method](actual, expected, message);
+
 		if (this.expectedOperations == 1) {
 			callback();
+			this.resetCucumberCallback();
 		} else {
 			this.expectedOperations--;
 		}
@@ -45,6 +47,10 @@ CucumberAssert.prototype.getCorrectCallback = function(callback) {
 	}
 
 	return callback;
+};
+
+CucumberAssert.prototype.resetCucumberCallback = function() {
+	this.cucumberCallback = null;
 };
 
 /**
