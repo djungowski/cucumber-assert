@@ -4,6 +4,10 @@ var CucumberAssert = function() {
 
 };
 
+CucumberAssert.prototype.expectedOperations = 1;
+
+CucumberAssert.prototype.cucumberCallback = null;
+
 /**
  * Call an actual "equals" assertion of the assert lib of node
  * See http://nodejs.org/api/assert.html for details
@@ -15,12 +19,32 @@ var CucumberAssert = function() {
  * @param [message]		The error message (optional)
  */
 CucumberAssert.prototype.callActualEqualAssert = function(method, actual, expected, callback, message) {
+
+	callback = this.getCorrectCallback(callback);
+
 	try {
 		assert[method](actual, expected, message);
-		callback();
+		if (this.expectedOperations == 1) {
+			callback();
+		} else {
+			this.expectedOperations--;
+		}
 	} catch(e) {
 		callback(new Error(e.message));
 	}
+};
+
+CucumberAssert.prototype.expectMultipleEquals = function(amountOfOperations, callback) {
+	this.expectedOperations = amountOfOperations;
+	this.cucumberCallback = callback;
+};
+
+CucumberAssert.prototype.getCorrectCallback = function(callback) {
+	if (callback == null && this.cucumberCallback != null) {
+		return this.cucumberCallback;
+	}
+
+	return callback;
 };
 
 /**
