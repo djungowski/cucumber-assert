@@ -11,11 +11,23 @@ describe('cucumber-assert tests', function() {
 	};
 
 	describe('callback', function() {
-	    it('throws if no callback is provided', function() {
+	    describe('no callback provided', function() {
+			var actual = 'someRandomString';
+			var expected = 'someRandomString';
+			var message = 'Some failure message';
+
 			var failingAssert = function() {
-				cucumberAssert.equal('foo', 'foo', null, 'some message');
-			}
-			expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+				cucumberAssert.equal(actual, expected, null, message);
+			};
+
+			it('throws if assert succeeds', function() {
+				expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+			});
+
+			it('throws if assert fails', function() {
+				expected = 'wrong string';
+				expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+			});
 	    });
 	});
 
