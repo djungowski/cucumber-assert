@@ -10,6 +10,15 @@ describe('cucumber-assert tests', function() {
 		callback: cucumberCallback
 	};
 
+	describe('callback', function() {
+	    it('throws if no callback is provided', function() {
+			var failingAssert = function() {
+				cucumberAssert.equal('foo', 'foo', null, 'some message');
+			}
+			expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+	    });
+	});
+
 	describe('#equal', function() {
 		it('calls the actual assert with all the params', function () {
 			spyOn(assert, 'equal');
