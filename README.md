@@ -35,6 +35,7 @@ module.exports = function() {
 		var password = this.getFieldValue('#password');
 		var name = this.getFieldValue('#name');
 		var tosCheck = this.getFieldValue('#tos');
+		
 		assert.expectMultipleEquals(3, callback);
 		assert.notEqual(password, '', null, 'Expected E-Mail to not be empty');
 		assert.notEqual(tosCheck, '', null, 'Expected Name not to be empty');
