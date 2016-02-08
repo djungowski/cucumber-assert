@@ -72,7 +72,7 @@ CucumberAssert.prototype.getCorrectCallback = function(callback) {
 
 /**
  * Reset any saved cucumber callback
- * 
+ *
  */
 CucumberAssert.prototype.resetCucumberCallback = function() {
 	this.cucumberCallback = null;
