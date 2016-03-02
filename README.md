@@ -59,3 +59,10 @@ The parameter "callback" is the callback provided by cucumber.js in step definit
 #### throws(block, callback, [error], [message])
 #### doesNotThrow(block, callback, [message])
 #### ifError(value, callback, [message])
+
+## Changelog
+1.0.3: Support multiple assert operations in one step
+
+1.0.2: Support cucumber.js >= 0.7.0
+
+1.0.1: Readme updates
