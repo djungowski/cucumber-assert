@@ -25,7 +25,7 @@ module.exports = function() {
 ```
 
 ## Multiple operations
-In case you want to do multiple equals/notEquals/etc. operations (ONLY works for equals operations!):
+Generally I would advise you to use single steps for every assert operation. In case you want to do multiple equals/notEquals/etc. operations anyhow (ONLY works for equals operations!):
 ```javascript
 var assert = require('cucumber-assert');
 
