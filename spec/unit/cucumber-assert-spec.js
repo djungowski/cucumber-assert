@@ -10,6 +10,27 @@ describe('cucumber-assert tests', function() {
 		callback: cucumberCallback
 	};
 
+	describe('callback', function() {
+	    describe('no callback provided', function() {
+			var actual = 'someRandomString';
+			var expected = 'someRandomString';
+			var message = 'Some failure message';
+
+			var failingAssert = function() {
+				cucumberAssert.equal(actual, expected, null, message);
+			};
+
+			it('throws if assert succeeds', function() {
+				expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+			});
+
+			it('throws if assert fails', function() {
+				expected = 'wrong string';
+				expect(failingAssert).toThrow(new TypeError('callback is not a function'));
+			});
+	    });
+	});
+
 	describe('#equal', function() {
 		it('calls the actual assert with all the params', function () {
 			spyOn(assert, 'equal');
@@ -97,6 +118,57 @@ describe('cucumber-assert tests', function() {
 			var message = 'I\'ve always been deeply passionate about nature. ';
 			cucumberAssert.notStrictEqual(actual, expected, cucumberCallback, message);
 			expect(assert.notStrictEqual).toHaveBeenCalledWith(actual, expected, message);
+		});
+	});
+
+	describe('expectMultipleEquals', function() {
+		var actual = 'I need a fake passport, preferably to France';
+		var expected = 'There\'s always money in the banana stand!';
+		var message = 'Heart attack never stopped old Big Bear.';
+
+	    it('allows running multiple equal operations', function() {
+	        spyOn(assert, 'equal');
+			spyOn(assert, 'notEqual');
+			spyOn(assert, 'notDeepEqual');
+			spyOn(assert, 'strictEqual');
+			spyOn(assert, 'notStrictEqual');
+			spyOn(callbackSpy, 'callback');
+
+			cucumberAssert.expectMultipleEquals(5, callbackSpy.callback);
+			cucumberAssert.equal(actual, expected, null, message);
+			cucumberAssert.notEqual(actual, expected, null, message);
+			cucumberAssert.notDeepEqual(actual, expected, null, message);
+			cucumberAssert.strictEqual(actual, expected, null, message);
+			cucumberAssert.notStrictEqual(actual, expected, null, message);
+
+			expect(assert.equal).toHaveBeenCalledWith(actual, expected, message);
+			expect(assert.notEqual).toHaveBeenCalledWith(actual, expected, message);
+			expect(assert.notDeepEqual).toHaveBeenCalledWith(actual, expected, message);
+			expect(assert.strictEqual).toHaveBeenCalledWith(actual, expected, message);
+			expect(assert.notStrictEqual).toHaveBeenCalledWith(actual, expected, message);
+
+
+			expect(callbackSpy.callback).toHaveBeenCalled();
+			expect(callbackSpy.callback.calls.count()).toEqual(1);
+	    });
+
+		it('resets the values', function() {
+			var secondCallbackSpy = {
+				callback: function() {}
+			};
+
+			spyOn(assert, 'equal');
+			spyOn(callbackSpy, 'callback');
+			spyOn(secondCallbackSpy, 'callback');
+
+			cucumberAssert.expectMultipleEquals(2, callbackSpy.callback);
+			cucumberAssert.equal(actual, expected, null, message);
+			cucumberAssert.equal(actual, expected, null, message);
+
+			cucumberAssert.equal(actual, expected, secondCallbackSpy.callback, message);
+
+			expect(callbackSpy.callback.calls.count()).toEqual(1);
+			expect(secondCallbackSpy.callback.calls.count()).toEqual(1);
 		});
 	});
 

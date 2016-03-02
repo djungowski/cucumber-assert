@@ -5,6 +5,18 @@ var CucumberAssert = function() {
 };
 
 /**
+ * Number of expected equals operations
+ * @type {number}
+ */
+CucumberAssert.prototype.expectedEqualsOperations = 1;
+
+/**
+ * The cucumber callback. Only set if expectedEqualsOperations is > 1
+ * @type {function}
+ */
+CucumberAssert.prototype.cucumberCallback = null;
+
+/**
  * Call an actual "equals" assertion of the assert lib of node
  * See http://nodejs.org/api/assert.html for details
  *
@@ -15,12 +27,55 @@ var CucumberAssert = function() {
  * @param [message]		The error message (optional)
  */
 CucumberAssert.prototype.callActualEqualAssert = function(method, actual, expected, callback, message) {
+
+	callback = this.getCorrectCallback(callback);
+
 	try {
 		assert[method](actual, expected, message);
-		callback();
+
+		if (this.expectedEqualsOperations == 1) {
+			callback();
+			this.resetCucumberCallback();
+		} else {
+			this.expectedEqualsOperations--;
+		}
 	} catch(e) {
 		callback(new Error(e.message));
 	}
+};
+
+/**
+ * Tell cucumber-assert that there will be more than 1 equals operation
+ *
+ * @param amountOfOperations
+ * @param callback
+ */
+CucumberAssert.prototype.expectMultipleEquals = function(amountOfOperations, callback) {
+	this.expectedEqualsOperations = amountOfOperations;
+	this.cucumberCallback = callback;
+};
+
+/**
+ * Get the correct callback for a equals operation.
+ * Will return this.cucumberCallback if set, otherwise the provided callback
+ *
+ * @param callback
+ * @returns {function}
+ */
+CucumberAssert.prototype.getCorrectCallback = function(callback) {
+	if (callback == null && this.cucumberCallback != null) {
+		return this.cucumberCallback;
+	}
+
+	return callback;
+};
+
+/**
+ * Reset any saved cucumber callback
+ *
+ */
+CucumberAssert.prototype.resetCucumberCallback = function() {
+	this.cucumberCallback = null;
 };
 
 /**
