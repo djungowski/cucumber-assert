@@ -1,5 +1,7 @@
 cucumber-assert
 ===============
+[![Build Status](https://travis-ci.org/djungowski/cucumber-assert.svg?branch=master)](https://travis-ci.org/djungowski/cucumber-assert)
+
 An assertion library for [cucumber.js](https://github.com/cucumber/cucumber-js). It allows assertions in cucumber.js without extra-long stacktraces when an assertion fails.
 
 ## Note
