@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/djungowski/cucumber-assert",
   "devDependencies": {
-    "cucumber": "^0.8.0",
+    "cucumber": "^1.0.0",
     "jasmine": "^2.3.2"
   }
 }
