@@ -27,7 +27,7 @@ module.exports = function() {
 ```
 
 ## Multiple operations
-Generally I would advise you to use single steps for every assert operation. In case you want to do multiple equals/notEquals/etc. operations anyhow (ONLY works for equals operations!):
+As the assert invokes the callback on success and multiple assertions in a single step will cause multiple callbacks. The way that you can work around this is by specifying up front the number of assertions that you are expecting. Be aware that all steps in your current step_definition will share the same assert object so if your current step does not hit the expected number of asserts then a future step might.  
 ```javascript
 var assert = require('cucumber-assert');
 
