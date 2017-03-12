@@ -276,4 +276,39 @@ describe('cucumber-assert tests', () => {
 			});
 		});
 	});
+
+	describe('#all()', function() {
+	    it('calls Promise.all', function() {
+	        spyOn(Promise, 'all').and.callThrough();
+			const promises = ['foo', 'bar'];
+
+			cucumberAssert.all(promises);
+
+			expect(Promise.all).toHaveBeenCalledWith(promises);
+	    });
+
+		it('does not resolve with any message', function(done) {
+			const promises = [];
+			promises.push(cucumberAssert.equal(true, true));
+			promises.push(cucumberAssert.equal(true, true));
+			promises.push(cucumberAssert.equal(true, true));
+
+			cucumberAssert.all(promises).then((result) => {
+				expect(result).toBeUndefined();
+				done();
+			});
+		});
+
+		it('rejects with an error', function(done) {
+			const promises = [];
+			promises.push(cucumberAssert.equal(true, true));
+			promises.push(cucumberAssert.equal(true, false));
+			promises.push(cucumberAssert.equal(true, true));
+
+			cucumberAssert.all(promises).catch((errors) => {
+				expect(errors).toEqual(new Error('true == false'));
+				done();
+			});
+		});
+	});
 });

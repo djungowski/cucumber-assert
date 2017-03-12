@@ -144,6 +144,17 @@ class CucumberAssert {
 			}
 		});
 	}
+
+	/**
+	 * Provide a convinient way to use Promise.all, otherwise you would always have to do
+	 * Promise.all(...).then(() => callback())
+	 *
+	 * @param promises
+	 * @returns {Promise}
+	 */
+	all(promises) {
+		return Promise.all(promises).then(() => {});
+	}
 }
 
 module.exports = new CucumberAssert();
