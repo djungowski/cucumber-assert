@@ -43,12 +43,12 @@ module.exports = function () {
 		assert.ifError({}, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
 
-	this.When(/^I use multiple equals$/, function (callback) {
+	this.When(/^I pass multiple equals$/, function (callback) {
 		const promises = [];
 		promises.push(assert.equal(true, true, errorMessageString));
 		promises.push(assert.equal(true, true, errorMessageString));
 		promises.push(assert.equal(true, true, errorMessageString));
-		Promise.all(promises).then(() => { callback(); });
+		assert.all(promises).then(callback);
 	});
 
 	this.When(/^I fail multiple equals$/, function (callback) {
