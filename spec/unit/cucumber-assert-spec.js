@@ -1,8 +1,8 @@
 var cucumberAssert = require('../../index.js');
 var assert = require('assert');
 
-describe('cucumber-assert tests', function() {
-	var cucumberCallback = function() {
+describe('cucumber-assert tests', () => {
+	var cucumberCallback = () => {
 
 	};
 
@@ -10,8 +10,8 @@ describe('cucumber-assert tests', function() {
 		callback: cucumberCallback
 	};
 
-	describe('#equal', function() {
-		it('calls the actual assert with all the params', function () {
+	describe('#equal', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'equal');
 
 			var actual = 'someRandomString';
@@ -27,7 +27,7 @@ describe('cucumber-assert tests', function() {
 			expect(actual).toEqual(jasmine.any(Promise));
 		});
 
-		it('resolves, when the assert succeeds', function(done) {
+		it('resolves, when the assert succeeds', (done) => {
 			const promise = cucumberAssert.equal('Heyyyyy, hermano.', 'Heyyyyy, hermano.', 'There are dozens of us! DOZENS!');
 			promise.then((result) => {
 				expect(result).toBe(true);
@@ -35,8 +35,8 @@ describe('cucumber-assert tests', function() {
 			})
 		});
 
-		describe('rejects with new Error when assert was not successful', function() {
-			it('uses the exception message', function(done) {
+		describe('rejects with new Error when assert was not successful', () => {
+			it('uses the exception message', (done) => {
 				const promise = cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.');
 				promise.catch((error) => {
 					expect(error).toEqual(new Error('\'Big Bear\' == \'Bob Loblaw Law Blog.\''));
@@ -45,7 +45,7 @@ describe('cucumber-assert tests', function() {
 
 			});
 
-			it('uses the provided message', function(done) {
+			it('uses the provided message', (done) => {
 				const message = 'Heart attack never stopped old Big Bear.';
 				const promise = cucumberAssert.equal('Big Bear', 'Bob Loblaw Law Blog.', message);
 				promise.catch((error) => {
@@ -56,8 +56,8 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#notEqual', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#notEqual', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'notEqual');
 			var actual = 'No, it\'s the opposite.';
 			var expected = 'Perhaps you remember Neuterfest?';
@@ -67,8 +67,8 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#deepEqual', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#deepEqual', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'deepEqual');
 			var actual = {"foo": "bar", "random": "object"};
 			var expected = {"foo": "bar", "random": "object"};
@@ -78,8 +78,8 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#notDeepEqual', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#notDeepEqual', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'notDeepEqual');
 			var actual = {"foo": "nope", "random": "Lungaharing"};
 			var expected = {"foo": "bar", "random": "object"};
@@ -89,10 +89,10 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#strictEqual', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#strictEqual', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'strictEqual');
-			var actual = function() { return 'But where did the lighter fluid come from?'};
+			var actual = () => { return 'But where did the lighter fluid come from?'};
 			var expected = 'But where did the lighter fluid come from?';
 			var message = 'Do the right thing here.';
 			cucumberAssert.strictEqual(actual, expected, message);
@@ -100,8 +100,8 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#notStrictEqual', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#notStrictEqual', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'notStrictEqual');
 			var actual = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
 			var expected = new function() { return 'If I wanted something your thumb touched I\'d eat the inside of your ear. '};
@@ -111,12 +111,12 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('Multiple operations', function() {
+	describe('Multiple operations', () => {
 		var actual = 'I need a fake passport, preferably to France';
 		var expected = 'There\'s always money in the banana stand!';
 		var message = 'Heart attack never stopped old Big Bear.';
 
-	    it('allows running multiple equal operations, using promises', function(done) {
+	    it('allows running multiple equal operations, using promises', (done) => {
 	        spyOn(assert, 'equal');
 			spyOn(assert, 'notEqual');
 			spyOn(assert, 'notDeepEqual');
@@ -143,26 +143,26 @@ describe('cucumber-assert tests', function() {
 	    });
 	});
 
-	describe('#throws', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#throws', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'throws');
-			var block = function() { };
+			var block = () => { };
 			var error = Error;
 			var message = 'I\'m good and ready.';
 			cucumberAssert.throws(block, error, message);
 			expect(assert.throws).toHaveBeenCalledWith(block, error, message);
 		});
 
-		it('returns a promise', function() {
-			var block = function() { throw new Error(); };
+		it('returns a promise', () => {
+			var block = () => { throw new Error(); };
 			var error = Error;
 			var message = 'I\'m good and ready.';
 			const actual = cucumberAssert.throws(block, error, message);
 			expect(actual).toEqual(jasmine.any(Promise));
 		});
 
-		it('resolves when the assertion was successful', function(done) {
-			var block = function() { throw new Error(); };
+		it('resolves when the assertion was successful', (done) => {
+			var block = () => { throw new Error(); };
 			var error = Error;
 			var message = 'I\'m good and ready.';
 			const promise = cucumberAssert.throws(block, error, message);
@@ -172,9 +172,9 @@ describe('cucumber-assert tests', function() {
 			});
 		});
 
-		describe('rejects with new Error when assert was not successful', function() {
-			it('uses the message provided', function(done) {
-				var block = function () {};
+		describe('rejects with new Error when assert was not successful', () => {
+			it('uses the message provided', (done) => {
+				var block = () => {};
 				var error = 'You could hump that hood.';
 				var message = 'I see you\'ve wasted no time in filling my seat hole.';
 				const promise = cucumberAssert.throws(block, error, message);
@@ -184,8 +184,8 @@ describe('cucumber-assert tests', function() {
 				});
 			});
 
-			it('uses the exception message if no message is provided', function(done) {
-				var block = function () {};
+			it('uses the exception message if no message is provided', (done) => {
+				var block = () => {};
 				var error = 'You can always tell a Milford man.';
 				const promise = cucumberAssert.throws(block, error);
 				promise.catch((error) => {
@@ -196,24 +196,24 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#doesNotThrow', function() {
-		it('calls the actual assert with all the params', function () {
+	describe('#doesNotThrow', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'doesNotThrow');
-			var block = function () {};
+			var block = () => {};
 			var message = 'Maybe it\'s not for us.';
 			cucumberAssert.doesNotThrow(block, message);
 			expect(assert.doesNotThrow).toHaveBeenCalledWith(block, message);
 		});
 
-		it('returns a promise', function() {
-			var block = function () {};
+		it('returns a promise', () => {
+			var block = () => {};
 			var message = 'Maybe it\'s not for us.';
 			const actual = cucumberAssert.doesNotThrow(block, message);
 			expect(actual).toEqual(jasmine.any(Promise));
 		});
 
-		it('resolves when the assertion was successful', function(done) {
-			var block = function () {};
+		it('resolves when the assertion was successful', (done) => {
+			var block = () => {};
 			var message = 'Maybe it\'s not for us.';
 			const promise = cucumberAssert.doesNotThrow(block, message);
 			promise.then((result) => {
@@ -222,9 +222,9 @@ describe('cucumber-assert tests', function() {
 			});
 		});
 
-		describe('rejects with new Error when assertion was not successful', function() {
-			it('uses the message provided', function(done) {
-				var block = function() { throw('She\'s a contestant') };
+		describe('rejects with new Error when assertion was not successful', () => {
+			it('uses the message provided', (done) => {
+				var block = () => { throw('She\'s a contestant') };
 				var message = 'Stack the chafing dishes outside by the mailbox.';
 				const promise = cucumberAssert.doesNotThrow(block, message);
 				promise.catch((error) => {
@@ -233,8 +233,8 @@ describe('cucumber-assert tests', function() {
 				});
 			});
 
-			it('uses a custom message if no message is provided', function(done) {
-				var block = function() { throw('She\'s a contestant') };
+			it('uses a custom message if no message is provided', (done) => {
+				var block = () => { throw('She\'s a contestant') };
 				const promise = cucumberAssert.doesNotThrow(block);
 				promise.catch((error) => {
 					expect(error).toEqual(new Error('Caught exception where there was supposed to be none.'));
@@ -244,21 +244,21 @@ describe('cucumber-assert tests', function() {
 		});
 	});
 
-	describe('#ifError', function() {
-		it('calls the actual assert with all the params', function() {
+	describe('#ifError', () => {
+		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'ifError');
 			var value = true;
 			cucumberAssert.ifError(value);
 			expect(assert.ifError).toHaveBeenCalledWith(value);
 		});
 
-		it('returns a promise', function() {
+		it('returns a promise', () => {
 			var value = false;
 			const actual = cucumberAssert.ifError(value);
 			expect(actual).toEqual(jasmine.any(Promise));
 		});
 
-		it('resolves if there is no error', function(done) {
+		it('resolves if there is no error', (done) => {
 			const promise = cucumberAssert.ifError(false);
 			promise.then((result) => {
 				expect(result).toBe(true);
@@ -266,8 +266,8 @@ describe('cucumber-assert tests', function() {
 			});
 		});
 
-		describe('rejects with new Error when assertion was not successful', function() {
-			it('uses the provided message', function(done) {
+		describe('rejects with new Error when assertion was not successful', () => {
+			it('uses the provided message', (done) => {
 				var message = 'I may have committed some light treason.';
 				const promise = cucumberAssert.ifError(true, message);
 				promise.catch((error) => {
@@ -276,7 +276,7 @@ describe('cucumber-assert tests', function() {
 				});
 			});
 
-			it('uses a custom error message if no message is provided', function(done) {
+			it('uses a custom error message if no message is provided', (done) => {
 				const promise = cucumberAssert.ifError(true);
 				promise.catch((error) => {
 					expect(error).toEqual(new Error('Expected value to be false, true provided.'));
