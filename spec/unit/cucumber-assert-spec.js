@@ -2,14 +2,6 @@ const cucumberAssert = require('../../index.js');
 const assert = require('assert');
 
 describe('cucumber-assert tests', () => {
-	const cucumberCallback = () => {
-
-	};
-
-	const callbackSpy = {
-		callback: cucumberCallback
-	};
-
 	describe('#equal', () => {
 		it('calls the actual assert with all the params', () => {
 			spyOn(assert, 'equal');
@@ -122,7 +114,6 @@ describe('cucumber-assert tests', () => {
 			spyOn(assert, 'notDeepEqual');
 			spyOn(assert, 'strictEqual');
 			spyOn(assert, 'notStrictEqual');
-			spyOn(callbackSpy, 'callback');
 
 			const promises = [];
 
