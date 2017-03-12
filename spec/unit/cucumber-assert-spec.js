@@ -22,7 +22,7 @@ describe('cucumber-assert tests', () => {
 		it('resolves, when the assert succeeds', (done) => {
 			const promise = cucumberAssert.equal('Heyyyyy, hermano.', 'Heyyyyy, hermano.', 'There are dozens of us! DOZENS!');
 			promise.then((result) => {
-				expect(result).toBe(true);
+				expect(result).toBeUndefined();
 				done();
 			})
 		});
@@ -158,7 +158,7 @@ describe('cucumber-assert tests', () => {
 			const message = 'I\'m good and ready.';
 			const promise = cucumberAssert.throws(block, error, message);
 			promise.then((result) => {
-				expect(result).toBe(true);
+				expect(result).toBeUndefined();
 				done();
 			});
 		});
@@ -208,7 +208,7 @@ describe('cucumber-assert tests', () => {
 			const message = 'Maybe it\'s not for us.';
 			const promise = cucumberAssert.doesNotThrow(block, message);
 			promise.then((result) => {
-				expect(result).toBe(true);
+				expect(result).toBeUndefined();
 				done();
 			});
 		});
@@ -252,7 +252,7 @@ describe('cucumber-assert tests', () => {
 		it('resolves if there is no error', (done) => {
 			const promise = cucumberAssert.ifError(false);
 			promise.then((result) => {
-				expect(result).toBe(true);
+				expect(result).toBeUndefined();
 				done();
 			});
 		});

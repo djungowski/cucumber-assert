@@ -14,7 +14,7 @@ class CucumberAssert {
 		return new Promise((resolve, reject) => {
 			try {
 				assert[method](actual, expected, message);
-				resolve(true);
+				resolve();
 			} catch(e) {
 				reject(new Error(e.message));
 			}
@@ -98,7 +98,7 @@ class CucumberAssert {
 		return new Promise((resolve, reject) => {
 			try {
 				assert.throws(block, error, message);
-				resolve(true);
+				resolve();
 			} catch(e) {
 				// For some reason with assert.throws, etc. the exception does not use the message provided
 				message = message || e.message;
@@ -117,7 +117,7 @@ class CucumberAssert {
 		return new Promise((resolve, reject) => {
 			try {
 				assert.doesNotThrow(block, message);
-				resolve(true);
+				resolve();
 			} catch(e) {
 				// For some reason with assert.doesNotThrow the exception message is undefined. Use a custom one
 				// if no message is provided
@@ -137,7 +137,7 @@ class CucumberAssert {
 		return new Promise((resolve, reject) => {
 			try {
 				assert.ifError(value);
-				resolve(true);
+				resolve();
 			} catch(e) {
 				message = message || 'Expected value to be false, true provided.';
 				reject(new Error(message));
