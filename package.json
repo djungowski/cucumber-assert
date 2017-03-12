@@ -4,7 +4,9 @@
   "description": "An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/jasmine/bin/jasmine.js && node_modules/cucumber/bin/cucumber.js spec/integration/"
+    "test": "./node_modules/.bin/jasmine && ./node_modules/.bin/cucumberjs spec/integration/",
+    "test:unit": "./node_modules/.bin/jasmine",
+    "test:integration": "./node_modules/.bin/cucumberjs spec/integration/"
   },
   "repository": {
     "type": "git",
