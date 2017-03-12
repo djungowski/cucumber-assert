@@ -27,6 +27,10 @@ module.exports = function () {
 		assert.equal(true, false, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
 
+	this.When(/^I pass an assert$/, function (callback) {
+		assert.equal(true, true, errorMessageString).then(callback);
+	});
+
 	this.When(/^I fail a throws$/, function (callback) {
 		assert.throws(function() {}, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
