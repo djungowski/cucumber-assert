@@ -24,34 +24,39 @@ module.exports = function () {
 	});
 
 	this.When(/^I fail an assert$/, function (callback) {
-		assert.equal(true, false, createAssertErrorMessage(callback), errorMessageString);
+		assert.equal(true, false, errorMessageString).catch(createAssertErrorMessage(callback));
+	});
+
+	this.When(/^I pass an assert$/, function (callback) {
+		assert.equal(true, true, errorMessageString).then(callback, callback);
 	});
 
 	this.When(/^I fail a throws$/, function (callback) {
-		assert.throws(function() {}, createAssertErrorMessage(callback), errorMessageString);
+		assert.throws(function() {}, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
 
 	this.When(/^I fail a doesNotThrow$/, function (callback) {
-		assert.throws(function() { throw('up'); }, createAssertErrorMessage(callback), errorMessageString);
+		assert.doesNotThrow(function() { throw('up'); }, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
 
 	this.When(/^I fail a ifError$/, function (callback) {
-		assert.ifError({}, createAssertErrorMessage(callback), errorMessageString);
+		assert.ifError({}, errorMessageString).catch(createAssertErrorMessage(callback));
 	});
 
-	this.When(/^I use multiple equals$/, function (callback) {
-		assert.expectMultipleEquals(3, callback);
-		assert.equal(true, true, null, errorMessageString);
-		assert.equal(true, true, null, errorMessageString);
-		assert.equal(true, true, null, errorMessageString);
+	this.When(/^I pass multiple equals$/, function (callback) {
+		const promises = [];
+		promises.push(assert.equal(true, true, errorMessageString));
+		promises.push(assert.equal(true, true, errorMessageString));
+		promises.push(assert.equal(true, true, errorMessageString));
+		assert.all(promises).then(callback);
 	});
 
 	this.When(/^I fail multiple equals$/, function (callback) {
-		assert.expectMultipleEquals(3, createAssertErrorMessage(callback));
-		assert.equal(true, true, null, errorMessageString);
-		assert.equal(true, true, null, errorMessageString);
-		assert.equal(true, false, null, errorMessageString);
-		callback();
+		const promises = [];
+		promises.push(assert.equal(true, true, errorMessageString));
+		promises.push(assert.equal(true, true, errorMessageString));
+		promises.push(assert.equal(true, false, errorMessageString));
+		Promise.all(promises).catch(createAssertErrorMessage(callback));
 	});
 
 	this.Then(/^everything worked as expected$/, function (callback) {
