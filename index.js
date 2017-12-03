@@ -1,4 +1,4 @@
-var assert = require('assert');
+const assert = require('assert');
 
 class CucumberAssert {
 	/**
@@ -9,6 +9,8 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 * 
+	 * @returns {Promise}
 	 */
 	callActualEqualAssert(method, actual, expected, message) {
 		return new Promise((resolve, reject) => {
@@ -27,6 +29,8 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	equal(actual, expected, message) {
 		return this.callActualEqualAssert('equal', actual, expected, message);
@@ -38,9 +42,11 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+     * @returns {Promise}
 	 */
 	notEqual(actual, expected, message) {
-		this.callActualEqualAssert('notEqual', actual, expected, message);
+		return this.callActualEqualAssert('notEqual', actual, expected, message);
 	}
 
 	/**
@@ -49,9 +55,11 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	deepEqual(actual, expected, message) {
-		this.callActualEqualAssert('deepEqual', actual, expected, message);
+        return this.callActualEqualAssert('deepEqual', actual, expected, message);
 	}
 
 	/**
@@ -60,9 +68,11 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	notDeepEqual(actual, expected, message) {
-		this.callActualEqualAssert('notDeepEqual', actual, expected, message);
+        return this.callActualEqualAssert('notDeepEqual', actual, expected, message);
 	}
 
 	/**
@@ -71,9 +81,11 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	strictEqual(actual, expected, message) {
-		this.callActualEqualAssert('strictEqual', actual, expected, message);
+        return this.callActualEqualAssert('strictEqual', actual, expected, message);
 	}
 
 	/**
@@ -82,9 +94,11 @@ class CucumberAssert {
 	 * @param actual		The actual value
 	 * @param expected		The expected value
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	notStrictEqual(actual, expected, message) {
-		this.callActualEqualAssert('notStrictEqual', actual, expected, message);
+        return this.callActualEqualAssert('notStrictEqual', actual, expected, message);
 	}
 
 	/**
@@ -93,6 +107,8 @@ class CucumberAssert {
 	 * @param block			The function to be executed
 	 * @param [error]		The expected error (optional)
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	throws(block, error, message) {
 		return new Promise((resolve, reject) => {
@@ -112,6 +128,8 @@ class CucumberAssert {
 	 *
 	 * @param block			The function to be executed
 	 * @param [message]		The error message (optional)
+	 *
+	 * @returns {Promise}
 	 */
 	doesNotThrow(block, message) {
 		return new Promise((resolve, reject) => {
@@ -132,6 +150,8 @@ class CucumberAssert {
 	 *
 	 * @param value			The value to be tested
 	 * @param [message]		The error message (optional)
+	 * 
+	 * @returns {Promise}
 	 */
 	ifError(value, message) {
 		return new Promise((resolve, reject) => {
