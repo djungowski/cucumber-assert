@@ -1,6 +1,6 @@
 {
   "name": "cucumber-assert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An assertion library for cucumber.js providing cucumber compatible failures instead of exceptions",
   "main": "index.js",
   "scripts": {
